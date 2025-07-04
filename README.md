@@ -1,1 +1,2 @@
-# database_set_up
+# Pomocné scripty pre nastavanie databázy 
+s
