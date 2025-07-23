@@ -124,7 +124,7 @@ Zápchy zahŕňajú okrem identifikátorov aj dynamické metriky (rýchlosť, d�
 3. Zaznamená metriky a ich vývoj:
    - max / min / priemer sa počíta cez `updateCount`, aby bol výpočet presný.
 4. Na konci skontroluje, či medzi dvoma súbormi nie je výpadok dát (> 1 hodina). V takom prípade sa aktívne udalosti ukončia (`finished = True`).
-5. Výsledky sa uložia vo forme JSON súborov pre ďalšiu analýzu (napr. cez Pandas, Excel, QGIS, atď.).
+5. Výsledky sa uložia vo forme JSON súborov pre ďalšiu analýzu (napr. cez Pandas,...).
 
 ---
 
