@@ -1,0 +1,5 @@
+.env
+database_creation/.env
+/database_creation/data
+/data
+/.idea

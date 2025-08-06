@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  db_central:
+    image: postgis/postgis:14-3.3
+    container_name: db_central
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_CENTRAL}
+      POSTGRES_USER: ${POSTGRES_USER_CENTRAL}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_CENTRAL}
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./init_db_central.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/db_central:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - analyticity-network
+
+  db_brno:
+    image: timescale/timescaledb-ha:pg14-latest
+    container_name: timescaledb_brno_new
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_BRNO}
+      POSTGRES_USER: ${POSTGRES_USER_BRNO}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_BRNO}
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/db_brno:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - analyticity-network
+
+  db_jmk:
+    image: timescale/timescaledb-ha:pg14-latest
+    container_name: timescaledb_jmk_new
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_JMK}
+      POSTGRES_USER: ${POSTGRES_USER_JMK}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_JMK}
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/db_jmk:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - analyticity-network
+
+  db_orp_most:
+    image: timescale/timescaledb-ha:pg14-latest
+    container_name: timescaledb_orp_most_new
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_ORP_MOST}
+      POSTGRES_USER: ${POSTGRES_USER_ORP_MOST}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_ORP_MOST}
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/db_orp_most:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - analyticity-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_new
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - db_brno
+      - db_jmk
+      - db_orp_most
+      - db_central
+    restart: unless-stopped
+    networks:
+      - analyticity-network
+
+networks:
+  analyticity-network:
+    external: true

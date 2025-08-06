@@ -106,7 +106,8 @@ def update_alert(alert, file_timestamp_millis):
             "location": alert.get("location", None),
             "pubMillis": alert.get("pubMillis", file_timestamp_millis),
             "lastupdated": alert.get("pubMillis", file_timestamp_millis),
-            "finished": False
+            ""
+            "": False
         }
 
 

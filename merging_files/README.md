@@ -69,22 +69,22 @@ Každý alert (napr. nehoda, uzávierka) obsahuje:
 - Lokalitu: `city`, `street`, `location`, `country`
 - Metadáta: `confidence`, `reliability`, `pubMillis`, `lastupdated`, `finished`
 
-| Pole                   | Spracovanie                      |
-|------------------------|----------------------------------|
-| `uuid`                 | nemení sa                        |
-| `country`, `city`      | posledná známa hodnota           |
-| `type`, `subtype`      | posledná hodnota                 |
-| `reportDescription`    | posledná hodnota                 |
-| `street`               | posledná hodnota                 |
-| `reportRating`         | maximum                          |
-| `confidence`           | maximum                          |
-| `reliability`          | maximum                          |
-| `roadType`, `magvar`   | posledná hodnota                 |
+| Pole                       | Spracovanie                      |
+|----------------------------|----------------------------------|
+| `uuid`                     | nemení sa                        |
+| `country`, `city`          | posledná známa hodnota           |
+| `type`, `subtype`          | posledná hodnota                 |
+| `reportDescription`        | posledná hodnota                 |
+| `street`                   | posledná hodnota                 |
+| `reportRating`             | maximum                          |
+| `confidence`               | maximum                          |
+| `reliability`              | maximum                          |
+| `roadType`, `magvar`       | posledná hodnota                 |
 | `reportByMunicipalityUser` | nemení sa                  |
-| `location`             | posledná hodnota                 |
-| `pubMillis`            | nemení sa                        |
-| `lastupdated`          | posledný výskyt                  |
-| `finished`             | nastaví sa, keď zmizne zo zdroja |
+| `location`                 | posledná hodnota                 |
+| `pubMillis`                | nemení sa                        |
+| `lastupdated`              | posledný výskyt                  |
+| `active`                   | nastaví sa, keď zmizne zo zdroja |
 
 ---
 
@@ -110,7 +110,7 @@ Zápchy zahŕňajú okrem identifikátorov aj dynamické metriky (rýchlosť, d�
 | `delay`                | maximum, priemer (avg)                 |
 | `pubMillis`            | nemení sa                              |
 | `lastupdated`          | posledný výskyt                        |
-| `finished`             | nastaví sa, keď zápcha zmizne          |
+| `active`               | nastaví sa, keď zápcha zmizne          |
 | `updateCount`          | počet zaznamenaných výskytov           |
 
 ---
